@@ -36,6 +36,11 @@ run docker with the /startup folder mounted.
 ``` bash
 docker run -v /tmp/startup:/startup metocean/aroha
 ```
+out will be
+``` bash
+meh lets not run
+INIT ERROR: script /startup/test.sh exited with code 35
+```
 
 example 2:
 
