@@ -36,8 +36,8 @@ http://smarden.org/runit/
 
 "/sbin/initsh" script checks for the existance of a directory '/startup' and will execute any scripts that end with ".sh".
 Notes:
-* the startup scripts run before runit.
-* if any script exits with a none zero code the docker will exit with the same code and not start runit.
+* the startup scripts run before runit services.
+* if any script exits with a non-zero code the docker will exit with the same code and not start runit.
 
 example:
 
