@@ -2,26 +2,33 @@
 
 Runit, Syslog-ng and Consul with an init script.
 
-This docker is a base docker for some of the metocean web-stack.
+This docker is a base docker for some of the MetOcean web-stack.
 
 ## /sbin/initsh
 
-The docker is started using /sbin/initsh as the master process (PID 1), it does does the following:
+The docker is started using /sbin/initsh as the master process (PID 1), it does the following:
 
 * checks the /startup folder for any startup .sh scripts.
 * starts runsvdir, runit then starts the services in the docker.
-* when the docker is shutdown initsh signals all ruint services to stop, then waits 2 seconds, then shuts down.
-* handles zombie processes.
+* when the docker is shutdown initsh signals all runit services to stop, then waits 2 seconds, then shuts down.
+* also handles zombie processes.
 
 ## runit
 
 runit is used for starting / stopping and logging of services.
 
 To make runit start a service you either link or copy a sh script called "run" into:
-
 /etc/services/[service name]/run
 
-check [/consul/etc/service/consul/run] in this repo as an example run file.
+Nginx exmaple would be:
+/etc/services/nginx/run
+``` bash
+#!/bin/sh -e
+exec nginx -g "daemon off;" 2>&1
+```
+Note:
+* nginx is not started as a daemon process, you should try to do this for any processes because we want runsvdir to get stdout.
+* stderr is piped to stdout. '2>&1'
 
 http://smarden.org/runit/
 
