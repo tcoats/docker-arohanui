@@ -58,9 +58,11 @@ meh lets not run
 INIT ERROR: script /startup/test.sh exited with code 35
 ```
 
-## Syslog-ng
+## logging
 
-Processes / services started in this docker are expected to output logs to stdout. Syslog-ng then pipes these back to initsh (PID 1) which then pipes this back to the host running the docker.
+Processes / services started in this docker are expected to output logs to stdout. Initsh (PID 1) then pipes this back to the host running the docker.
+
+Syslog-ng is used for pipe dmesg to the initsh (PID 1).
 
 ## Consul
 
