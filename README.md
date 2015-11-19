@@ -62,7 +62,7 @@ INIT ERROR: script /startup/test.sh exited with code 35
 
 Processes / services started in this docker are expected to output logs to stdout. Initsh (PID 1) then pipes this back to the host running the docker.
 
-Syslog-ng is used for pipe dmesg to the initsh (PID 1).
+Syslog-ng is used for piping dmesg to the initsh (PID 1).
 
 ## Consul
 
