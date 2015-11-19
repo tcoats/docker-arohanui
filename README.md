@@ -68,7 +68,7 @@ Syslog-ng is used for piping dmesg to the initsh (PID 1).
 
 MetOcean uses the consul for service discovery, failover etc... check consul.io for more details.
 
-If you would like consul to not run at startup you can do the following:
+If you would like to stop consul from running you can:
 
 create /tmp/startup/stop_consul.sh with:
 ``` bash
