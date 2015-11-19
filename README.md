@@ -32,9 +32,9 @@ Notes:
 
 example 1:
 
-in this example stop docker from starting docker.
+This example stops docker the docker from starting up.
 
-create /tmp/startup/stop_consul.sh with:
+create /tmp/startup/kill_docker.sh with:
 ``` bash
 echo 'meh lets not run'
 exit 35
@@ -43,7 +43,7 @@ run docker with the /startup folder mounted.
 ``` bash
 docker run -v /tmp/startup:/startup metocean/aroha
 ```
-out will be
+output will be
 ``` bash
 meh lets not run
 INIT ERROR: script /startup/test.sh exited with code 35
