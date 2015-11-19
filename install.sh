@@ -20,7 +20,7 @@ apk del go git gcc musl-dev make bash wget unzip
 cp -R /install/consul/* /
 
 # Install node.js syslog-ng zeromq initsh bashalias
-apk add nodejs syslog-ng zeromq
+apk add syslog-ng
 cp -R /install/syslog-ng/* /
 cp -R /install/initsh/* /
 cp -R /install/bashalias/* /

@@ -24,6 +24,17 @@ onSIGCHLD() {
   echo "SIGCHLD"
 }
 
+if [ -d /startup ]; then
+  for script in /startup/*.sh; do
+    sh "$script"
+    ret=$?
+    if [ $ret -ne 0 ]; then
+      echo 'INIT ERROR: script '"$script"' exited with code '$ret
+      exit $ret
+    fi
+  done
+fi
+
 trap onSIGHUP SIGHUP
 trap onSIGINT SIGINT
 trap onSIGTERM SIGTERM
