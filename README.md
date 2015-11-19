@@ -8,8 +8,8 @@ This docker is a base docker for some of the metocean web-stack.
 
 The docker is started using /sbin/initsh as the master process (PID 1), it does does the following:
 
-* checks /startup folder for any startup .sh scripts.
-* starts runit, runit then starts the services in the docker.
+* checks the /startup folder for any startup .sh scripts.
+* starts runsvdir, runit then starts the services in the docker.
 * when the docker is shutdown initsh signals all ruint services to stop, then waits 2 seconds, then shuts down.
 * handles zombie processes.
 
@@ -32,7 +32,7 @@ Notes:
 * the startup scripts run before runit.
 * if any script exits with a none zero code the docker will exit with the same code and not start runit.
 
-example 1:
+example:
 
 This example stops docker the docker from starting up.
 
@@ -51,7 +51,15 @@ meh lets not run
 INIT ERROR: script /startup/test.sh exited with code 35
 ```
 
-example 2:
+## Syslog-ng
+
+Processes / services starting in this docker are excepted to output logs to stdout. Syslog-ng then pipes these back to initsh (PID 1) which then pipes this back to the host running the docker.
+
+## Consul
+
+MetOcean uses the consul for service discovery, failover etc... check consul.io for more details.
+
+If you would like consul to not run at startup you can do the following:
 
 in this example we will stop consul from starting.
 
@@ -64,7 +72,3 @@ run docker with the /startup folder mounted.
 ``` bash
 docker run -v /tmp/startup:/startup metocean/aroha
 ```
-
-## Syslog-ng
-
-## Consul
