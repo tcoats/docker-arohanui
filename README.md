@@ -8,7 +8,7 @@ The docker is started using /sbin/initsh as the master process (PID 1), it does 
 
 * checks /startup folder for any startup .sh scripts.
 * starts runit, runit then starts the services in the docker.
-* when the docker is shutdown signals all ruint services to stop and waits 2 seconds, then shuts down.
+* when the docker is shutdown initsh signals all ruint services to stop, then waits 2 seconds, then shuts down.
 * handles zombie processes.
 
 ## runit
