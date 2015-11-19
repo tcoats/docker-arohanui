@@ -2,6 +2,8 @@
 
 Runit, Syslog-ng and Consul with an init script.
 
+This docker is a base docker for some of the metocean web-stack.
+
 ## /sbin/initsh
 
 The docker is started using /sbin/initsh as the master process (PID 1), it does does the following:
