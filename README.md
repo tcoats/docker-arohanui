@@ -2,7 +2,14 @@
 
 Runit, Syslog-ng and Consul with an init script.
 
-This docker is run with the startup script "/sbin/initsh", this script is the master process PID 1.
+## /sbin/initsh
+
+The docker is started using /sbin/initsh as the master process (PID 1), it does does the following:
+
+* checks /startup folder for any startup .sh scripts.
+* starts runit, runit then starts any services in the docker.
+* handles zombie processes.
+* signals all ruint services to stop and waits 2 seconds, then shuts down.
 
 ## runit
 
