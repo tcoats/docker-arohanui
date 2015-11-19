@@ -34,7 +34,7 @@ Notes:
 
 example:
 
-This example stops docker the docker from starting up.
+This example makes docker output the message 'meh lets not run' and exits with 35 when you try to run metocean/aroha.
 
 create /tmp/startup/kill_docker.sh with:
 ``` bash
@@ -53,15 +53,13 @@ INIT ERROR: script /startup/test.sh exited with code 35
 
 ## Syslog-ng
 
-Processes / services starting in this docker are excepted to output logs to stdout. Syslog-ng then pipes these back to initsh (PID 1) which then pipes this back to the host running the docker.
+Processes / services started in this docker are expected to output logs to stdout. Syslog-ng then pipes these back to initsh (PID 1) which then pipes this back to the host running the docker.
 
 ## Consul
 
 MetOcean uses the consul for service discovery, failover etc... check consul.io for more details.
 
 If you would like consul to not run at startup you can do the following:
-
-in this example we will stop consul from starting.
 
 create /tmp/startup/stop_consul.sh with:
 ``` bash
