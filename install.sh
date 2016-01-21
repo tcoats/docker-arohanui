@@ -5,18 +5,21 @@ apk update
 apk upgrade
 
 # Install Consul
-apk add go git gcc musl-dev make bash wget unzip
+apk add go git gcc musl-dev make bash wget unzip zip
 export GOPATH=/tmp/go
+go get github.com/mitchellh/gox
+export PATH=$PATH:/tmp/go/bin
 go get github.com/hashicorp/consul
 cd /tmp/go/src/github.com/hashicorp/consul
 git checkout v$CONSUL_VERSION
 make
 mv bin/consul /usr/bin
-cd /tmp
-wget -O ui.zip http://dl.bintray.com/mitchellh/consul/${CONSUL_VERSION}_web_ui.zip
+mkdir /consul-ui
+cd /consul-ui
+wget -O ui.zip http://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_web_ui.zip
 unzip ui.zip
-mv dist /consul-ui
-apk del go git gcc musl-dev make bash wget unzip
+rm ui.zip
+apk del go git gcc musl-dev make bash wget unzip zip
 cp -R /install/consul/* /
 
 # Install node.js syslog-ng zeromq initsh bashalias
