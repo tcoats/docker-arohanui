@@ -1,8 +1,6 @@
-# Aroha
+# Arohanui
 
-Runit, Syslog-ng and Consul with an init script.
-
-This docker is a base docker for some of the MetOcean web-stack.
+Runit, Syslog-ng and Node.js with an init script.
 
 ## initsh
 
@@ -63,19 +61,3 @@ INIT ERROR: script /startup/test.sh exited with code 35
 Processes / services started in this docker are expected to output logs to stdout. Initsh (PID 1) then pipes this back to the host running the docker.
 
 Syslog-ng is used for piping dmesg to the initsh (PID 1).
-
-## Consul
-
-MetOcean uses the consul for service discovery, failover etc... check consul.io for more details.
-
-If you would like to stop consul from running you can:
-
-create /tmp/startup/stop_consul.sh with:
-``` bash
-echo 'removing consul service'
-rm -rf /etc/service/consul
-```
-run docker with the /startup folder mounted.
-``` bash
-docker run -v /tmp/startup:/startup metocean/aroha
-```
