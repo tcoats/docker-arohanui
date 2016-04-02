@@ -1,2 +1,0 @@
-#!/bin/sh
-exec consul agent -ui-dir /consul-ui -data-dir /consul-data -config-dir /consul
