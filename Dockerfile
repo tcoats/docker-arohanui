@@ -1,5 +1,5 @@
-FROM gliderlabs/alpine:3.3
-MAINTAINER Thomas Coats <thomas@metocean.co.nz>
+FROM gliderlabs/alpine:3.6
+MAINTAINER Thomas Coats <thomas.coats@github.com>
 
 ADD . /install/
 RUN /install/install.sh
