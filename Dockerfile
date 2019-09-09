@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:3.6
+FROM alpine:3.10
 MAINTAINER Thomas Coats <thomas.coats@github.com>
 
 ADD . /install/
